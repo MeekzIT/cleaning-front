@@ -1,0 +1,53 @@
+.input {
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  font-size: 1.2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  background-color: white;
+  border: none;
+  min-width: 200px;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
+}
+
+.fullWidth {
+  width: 95%;
+}
+
+textarea {
+  font-family: "Roboto", sans-serif;
+  width: 90%;
+  height: 150px;
+  padding: 1.5rem 2rem;
+  border: none;
+  border-radius: 15px;
+  background-color: white;
+  font-size: 1.2rem;
+  resize: none;
+}
+
+@media (max-width: 768px) {
+  textarea {
+    width: 300px;
+    padding: 1rem;
+  }
+
+  .input {
+    width: 300px;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  textarea {
+    width: 250px;
+    padding: 1rem;
+  }
+
+  .input {
+    width: 250px;
+    padding: 1rem;
+  }
+}

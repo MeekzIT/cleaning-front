@@ -1,0 +1,40 @@
+.buttonContained {
+    box-sizing: border-box;
+    padding: 1rem;
+    background: white;
+    border: 2px solid #01DFA4;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.01rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    z-index: 1;
+    min-width: 160px;
+    width: 100%;
+    white-space: pre-wrap;
+    color: #1A1940;
+    text-align: center;
+    text-decoration: none;
+}
+
+.buttonContained:hover {
+    transition: .5s;
+    border: 2px solid #01DFA4;
+    background: #1A1940;
+    color: white;
+}
+
+.secondary {
+    width: 100%;
+    background-color: #1A1940;
+    color: white;
+    border: 2px solid #01DFA4;
+}
+
+.secondary:hover {
+    background: white;
+    color: #1A1940;
+    border: 2px solid #01DFA4;
+}

@@ -1,0 +1,9 @@
+export const HOME_PAGE = "/";
+export const SERVICES_PAGE = "/services";
+export const IMAGES_PAGE = "/images";
+export const ORDERING_PAGE = "/order";
+export const SERVICE_DETAIL = "/services/:id";
+export const REGISTER_PAGE = "/sign-up";
+export const LOGIN_PAGE = "/sign-in";
+export const SETTINGS_PAGE = "/settings/user";
+export const SETTINGS_PAGE_ADDRESS = "/settings/address";

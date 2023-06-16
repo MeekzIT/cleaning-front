@@ -1,0 +1,89 @@
+.images-box {
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 50px;
+}
+
+.images-box img {
+    width: 40%;
+    cursor: pointer;
+    position: relative;
+}
+
+.active-image-modal {
+    max-width: 1000px;
+    max-height: 600px;
+}
+
+
+.ArrowRightIcon {
+    position: absolute;
+    top: 45%;
+    right: 5%;
+}
+
+.ArrowLeftIcon {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+}
+
+.ArrowLeftIcon button,
+.ArrowRightIcon button {
+    min-width: 50px !important;
+}
+
+@media (max-width: 1024px) {
+    .active-image-modal {
+        max-width: 800px;
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 850px) {
+
+    .images-box {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .images-box img {
+        width: 90%;
+    }
+
+    .active-image-modal {
+        max-width: 600px;
+        max-height: 600px;
+    }
+
+    .ArrowLeftIcon button,
+    .ArrowRightIcon button {
+        min-width: 20px !important;
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .active-image-modal {
+        max-width: 500px;
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 650px) {
+    .active-image-modal {
+        max-width: 400px;
+        max-height: 600px;
+    }
+}
+
+@media (max-width: 425px) {
+    .active-image-modal {
+        max-width: 90vw;
+        max-height: 600px;
+    }
+}

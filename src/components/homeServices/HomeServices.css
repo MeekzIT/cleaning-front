@@ -1,0 +1,126 @@
+.home-services {
+  width: 100%;
+  background: #ececec;
+  padding: 20px 0;
+}
+
+.home-services h1 {
+  margin-left: 30px;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #01dfa4;
+}
+
+.slider-item {
+  display: flex !important;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.slider-item div {
+  width: 40%;
+}
+
+.slider-item div h1 {
+  color: #1a1940;
+  margin-left: 0;
+}
+
+.slider-item div button {
+  width: 20%;
+}
+
+.slider-category {
+  display: flex;
+  flex-direction: column;
+  gap: 40%;
+}
+
+.slider-subcategory {
+  background: #01dfa4;
+  border-radius: 10px;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.slider-subcategory-item {
+  width: 30% !important;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.slider-subcategory-item img {
+  width: 90%;
+  max-height: 50%;
+  border-radius: 10px;
+}
+
+.slick-dots {
+  bottom: 40% !important;
+  right: 42% !important;
+}
+
+.slick-dots li {
+  margin: 0 7px !important;
+}
+.slick-dots li button:before {
+  font-size: 25px !important;
+  opacity: 1 !important;
+}
+
+.slick-dots li button:before {
+  color: #01dfa4 !important;
+}
+.slick-dots li.slick-active button:before {
+  color: #1a1940 !important;
+}
+
+@media (max-width: 768px) {
+  .slider-item {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .home-services h1 {
+    font-size: 30px;
+    margin-left: 30px;
+  }
+
+  .slider-item div {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .slider-category {
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+  }
+
+  .slick-dots {
+    bottom: 50% !important;
+    right: 0 !important;
+  }
+
+  .slider-subcategory {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .slider-subcategory-item {
+    width: 90% !important;
+    text-align: center;
+  }
+}

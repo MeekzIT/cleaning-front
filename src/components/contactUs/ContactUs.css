@@ -1,0 +1,134 @@
+.contact-us {
+  width: 100%;
+  min-height: 800px;
+  position: relative;
+  background: #ececec;
+  padding: 10px 0;
+}
+
+.contact-us h1 {
+  margin-left: 30px;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #01dfa4;
+}
+
+.contact-us-ill {
+  position: absolute;
+  bottom: 0;
+  z-index: 0;
+}
+
+.contact-us-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+}
+
+.contact-us-image-box {
+  width: 500px;
+  height: 500px;
+  background: #1a1940;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-us-image-box span {
+  position: absolute;
+  padding: 15px 20px;
+  background: #01dfa4;
+  line-height: 24px;
+  font-size: 20px;
+  border-radius: 5px;
+  right: 0;
+  top: 10px;
+}
+
+.contact-us-image-box img {
+  width: 90%;
+  height: 100%;
+}
+
+.contact-us-form {
+  width: 40%;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  z-index: 5;
+}
+
+.contact-us-form-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-us-form-email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1300px) {
+  .contact-us-form-name {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .contact-us-form-name div input {
+    width: 90%;
+  }
+
+  .contact-us-image-box {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-us-content {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .contact-us-ill img {
+    width: 320px;
+  }
+
+  .contact-us-image-box {
+    width: 80%;
+    height: 300px;
+    border-radius: 0;
+  }
+
+  .contact-us-image-box span {
+    display: none;
+  }
+
+  .contact-us-form {
+    width: 100%;
+    padding: unset;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+  }
+
+  .contact-us-form-name {
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+}
