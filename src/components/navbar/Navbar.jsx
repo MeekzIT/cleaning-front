@@ -22,6 +22,7 @@ import MenuItem from "@mui/material/MenuItem";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { logout } from "../../store/actions/authAction";
+import logo from "./logo.png";
 
 export default function Navbar() {
   const isMobile = useIsMobile();
@@ -55,7 +56,7 @@ export default function Navbar() {
     <nav className="navbar-all">
       <section className="navbar">
         <h1 className="navbar-logo" onClick={() => navigate(HOME_PAGE)}>
-          LOGO
+          <img src={logo} alt="logo" />
         </h1>
         <div className="menu-icon">
           {active ? (

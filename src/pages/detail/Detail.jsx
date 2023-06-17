@@ -42,7 +42,7 @@ const Detail = () => {
       </div>
       <div className="detail-info">
         <div>
-          <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--yTbPkRhw--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/2pb3iwjeka9u3westcxk.png" />
+          <img src={single?.mainImage} alt="mainImage" />
         </div>
         <div>{desc}</div>
       </div>
@@ -85,6 +85,7 @@ const Detail = () => {
               descHy={i?.descHy}
               descRu={i?.descRu}
               path={i?.id}
+              mainImage={i?.mainImage}
               show={false}
             />
           );

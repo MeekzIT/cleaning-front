@@ -24,6 +24,8 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { setAuthOrder } from "../../store/actions/orderAction";
 import Swal from "sweetalert2";
 import { io } from "socket.io-client";
+import Price from "./price";
+import PrePrice from "./prePrice";
 
 const IsAuthOrder = () => {
   const { t } = useTranslation();
@@ -47,7 +49,7 @@ const IsAuthOrder = () => {
   useEffect(() => {
     dispatch(getUser());
     dispatch(getServices());
-    socket.current = io("ws://localhost:8001");
+    socket.current = io("ws://localhost:8000");
   }, []);
 
   const handleFormSubmit = (values) => {
@@ -111,7 +113,6 @@ const IsAuthOrder = () => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <div>
                   <div>
-                    {console.log(formik.errors, "asdfghj")}
                     {data?.length ? (
                       <Field name="address">
                         {({ field }) => (
@@ -201,6 +202,7 @@ const IsAuthOrder = () => {
                       <DesktopDatePicker
                         name="date"
                         label={t("date")}
+                        disablePast
                         value={formik.values.date}
                         format="YYYY-MM-DD"
                         onChange={(value) => {
@@ -221,6 +223,7 @@ const IsAuthOrder = () => {
                         name="time"
                         value={formik.values.time}
                         format="HH:mm"
+                        disablePast
                         onChange={(value) => {
                           form.setFieldValue(
                             "time",
@@ -236,7 +239,7 @@ const IsAuthOrder = () => {
                   formik.values.subCategoryId &&
                   category
                     ?.filter((i) => i.id == formik.values.categoryId)[0]
-                    .SubCategories.filter(
+                    .SubCategories?.filter(
                       (o) => o.id == formik.values.subCategoryId
                     )[0]?.price && (
                     <div>
@@ -245,44 +248,48 @@ const IsAuthOrder = () => {
                           flexDirection: "column",
                         }}
                       >
-                        <h3>
-                          {t("all")} `
-                          {formik.values.categoryId &&
-                          formik.values.subCategoryId &&
-                          withArea ? (
-                            <>
-                              {Number(
+                        {formik.values.categoryId &&
+                          formik.values.subCategoryId && (
+                            <Price
+                              price={
                                 category
                                   ?.filter(
                                     (i) => i.id == formik.values.categoryId
                                   )[0]
-                                  .SubCategories.filter(
+                                  .SubCategories?.filter(
                                     (o) => o.id == formik.values.subCategoryId
                                   )[0].price
-                              ) *
-                                Number(
-                                  data.filter(
-                                    (i) => i.id === formik.values.address
-                                  )[0]?.area
-                                )}
-                              ֏
-                            </>
-                          ) : (
-                            <>
-                              {Number(
-                                category
-                                  ?.filter(
-                                    (i) => i.id == formik.values.categoryId
-                                  )[0]
-                                  .SubCategories.filter(
-                                    (o) => o.id == formik.values.subCategoryId
-                                  )[0].price
-                              )}
-                              ֏
-                            </>
+                              }
+                              withArea={withArea}
+                              area={
+                                data?.filter(
+                                  (i) => i.id === formik.values.address
+                                )[0]?.area
+                              }
+                            />
                           )}
-                        </h3>
-                        {formik.values.prepay === "online" && (
+                        {formik.values.prepay === "online" &&
+                          formik.values.categoryId &&
+                          formik.values.subCategoryId && (
+                            <PrePrice
+                              price={
+                                category
+                                  ?.filter(
+                                    (i) => i.id == formik.values.categoryId
+                                  )[0]
+                                  .SubCategories?.filter(
+                                    (o) => o.id == formik.values.subCategoryId
+                                  )[0].price
+                              }
+                              withArea={withArea}
+                              area={
+                                data?.filter(
+                                  (i) => i.id === formik.values.address
+                                )[0]?.area
+                              }
+                            />
+                          )}
+                        {/* {formik.values.prepay === "online" && (
                           <h3>
                             {t("pre")} 20% ` {"  "}
                             {formik.values.categoryId &&
@@ -307,7 +314,7 @@ const IsAuthOrder = () => {
                                 0.2 +
                                 "֏"}
                           </h3>
-                        )}
+                        )} */}
                       </div>
                       <FormControl>
                         <FormLabel id="demo-radio-buttons-group-label">

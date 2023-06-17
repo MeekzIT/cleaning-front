@@ -23,6 +23,8 @@ import { io } from "socket.io-client";
 import "./Order.css";
 import { setOrder } from "../../store/actions/orderAction";
 import Swal from "sweetalert2";
+import Price from "./price";
+import PrePrice from "./prePrice";
 
 // export const socket = io("ws://localhost:8900");
 
@@ -36,10 +38,9 @@ const Order = () => {
   const lang = useSelector((state) => state.lang.lang);
 
   useEffect(() => {
-    socket.current = io("ws://localhost:8001");
+    socket.current = io("ws://localhost:8000");
   }, []);
   const handleFormSubmit = (values) => {
-    console.log(values);
     dispactch(setOrder(values));
     socket.current.emit("sendActivityInvite", {
       date: values.date + "T" + values.time,
@@ -110,7 +111,6 @@ const Order = () => {
           >
             {(formik) => (
               <Form className="order-form">
-                {console.log(formik.errors)}
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <div>
                     <Field name="name">
@@ -172,6 +172,7 @@ const Order = () => {
                         <DesktopDatePicker
                           name="date"
                           label={t("date")}
+                          disablePast
                           value={formik.values.date}
                           format="YYYY-MM-DD"
                           onChange={(value) => {
@@ -189,6 +190,7 @@ const Order = () => {
                         <TimePicker
                           label={t("time")}
                           name="time"
+                          disablePast
                           value={formik.values.time}
                           format="HH:mm"
                           onChange={(value) => {
@@ -317,23 +319,37 @@ const Order = () => {
                               flexDirection: "column",
                             }}
                           >
-                            <h3>
+                            {formik.values.select1 && formik.values.select2 && (
+                              <Price
+                                price={
+                                  category
+                                    ?.filter(
+                                      (i) => i.id == formik.values.select1
+                                    )[0]
+                                    .SubCategories.filter(
+                                      (o) => o.id == formik.values.select2
+                                    )[0].price
+                                }
+                                withArea={withArea}
+                                area={formik.values.area}
+                              />
+                            )}
+
+                            {/* <h3>
                               {t("all")} `
                               {formik.values.select1 &&
                               formik.values.select2 &&
                               formik.values.area ? (
                                 <>
-                                  {
-                                    Number(
-                                      category
-                                        ?.filter(
-                                          (i) => i.id == formik.values.select1
-                                        )[0]
-                                        .SubCategories.filter(
-                                          (o) => o.id == formik.values.select2
-                                        )[0].price
-                                    ) * Number(formik.values.area)
-                                  }
+                                  {Number(
+                                    category
+                                      ?.filter(
+                                        (i) => i.id == formik.values.select1
+                                      )[0]
+                                      .SubCategories.filter(
+                                        (o) => o.id == formik.values.select2
+                                      )[0].price
+                                  ) * Number(formik.values.area)}
                                   ֏
                                 </>
                               ) : (
@@ -350,8 +366,25 @@ const Order = () => {
                                   ֏
                                 </>
                               )}
-                            </h3>
-                            {formik.values.prepay === "online" && (
+                            </h3> */}
+                            {formik.values.prepay === "online" &&
+                              formik.values.select1 &&
+                              formik.values.select2 && (
+                                <PrePrice
+                                  price={
+                                    category
+                                      ?.filter(
+                                        (i) => i.id == formik.values.select1
+                                      )[0]
+                                      .SubCategories.filter(
+                                        (o) => o.id == formik.values.select2
+                                      )[0].price
+                                  }
+                                  withArea={withArea}
+                                  area={formik.values.area}
+                                />
+                              )}
+                            {/* {formik.values.prepay === "online" && (
                               <h3>
                                 {t("pre")} 20% ` {"  "}
                                 {formik.values.select1 &&
@@ -369,7 +402,7 @@ const Order = () => {
                                     0.2 +
                                     "֏"}
                               </h3>
-                            )}
+                            )} */}
                           </div>
                           <FormControl>
                             <FormLabel id="demo-radio-buttons-group-label">

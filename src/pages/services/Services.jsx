@@ -66,6 +66,7 @@ const Services = () => {
                 descHy={i?.descHy}
                 descRu={i?.descRu}
                 path={i?.id}
+                mainImage={i?.mainImage}
                 show={true}
               />
             );

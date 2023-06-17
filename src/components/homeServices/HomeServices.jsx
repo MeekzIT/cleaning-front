@@ -66,8 +66,6 @@ const HomeServices = () => {
     dispatch(getServices());
   }, []);
 
-  console.log(data);
-
   return (
     <div className="home-services">
       <h1>{t("services")}</h1>
@@ -89,12 +87,7 @@ const HomeServices = () => {
                 {i?.SubCategories?.slice(0, 3)?.map((s) => {
                   return (
                     <div className="slider-subcategory-item" key={s.id}>
-                      <img
-                        src={
-                          "https://res.cloudinary.com/practicaldev/image/fetch/s--yTbPkRhw--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/2pb3iwjeka9u3westcxk.png"
-                        }
-                        alt="slider-subcategory-item"
-                      />
+                      <img src={s?.mainImage} alt="slider-subcategory-item" />
                       <h2>
                         {lang == "am"
                           ? s.naemHy
